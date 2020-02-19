@@ -1,5 +1,6 @@
 package com.wechat.detal.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -17,12 +18,12 @@ import java.util.Date;
 public class BaseEntity implements Serializable {
 
     @CreationTimestamp
-//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @Column(updatable=false)
     private Date createDateTime;
 
     @UpdateTimestamp
-//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateDateTime;
 
     @Column(name = "USE_FLAG")
