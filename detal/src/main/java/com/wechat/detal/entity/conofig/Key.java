@@ -1,6 +1,7 @@
-package com.wechat.detal.entity;
+package com.wechat.detal.entity.conofig;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.wechat.detal.entity.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -13,7 +14,7 @@ import java.util.Date;
  * @description 认证表,用来存储认证码的基本信息
  */
 @Table(name = "KEY")
-public class Key extends  BaseEntity{
+public class Key extends BaseEntity {
 
     /**
      * 认证码
@@ -28,6 +29,11 @@ public class Key extends  BaseEntity{
      */
     @Column(name ="KEY_TYPE", columnDefinition="varchar(255) default '0'")
     private String keyType;
+
+    /**
+     * 微信id
+     */
+    private String wechatId;
 
     /**
      * 用户当前的阶段

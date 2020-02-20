@@ -1,4 +1,6 @@
-package com.wechat.detal.entity;
+package com.wechat.detal.entity.conofig;
+
+import com.wechat.detal.entity.BaseEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -6,7 +8,7 @@ import java.io.Serializable;
 /**
  * @author QiuMingJie
  * @date 2020-02-16 14:51
- * @description
+ * @description vip群表
  */
 @Table(name = "ConfigChatting")
 @Entity

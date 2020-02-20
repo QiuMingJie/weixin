@@ -1,4 +1,6 @@
-package com.wechat.detal.entity;
+package com.wechat.detal.entity.conofig;
+
+import com.wechat.detal.entity.BaseEntity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +13,7 @@ import java.io.Serializable;
  * @description 认证表，用来保存每个认证码绑定的信息
  */
 
-public class ConfigPeople extends  BaseEntity implements Serializable {
+public class ConfigPeople extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,5 +1,7 @@
 package com.wechat.detal.controller.accept;
 
+import com.wechat.detal.dto.MessageStreamDto;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,10 +50,10 @@ import org.springframework.web.bind.annotation.RestController;
  * !@#						$%^
  */
 @RestController
-@RequestMapping("/form")
+@RequestMapping("/wechat")
 public class AcceptController {
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String aa() {
-        return "222";
+    @RequestMapping(value = "/msg", method = RequestMethod.POST)
+    public String aa(@RequestBody MessageStreamDto a) {
+        return a.invoke().toString();
     }
 }

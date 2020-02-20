@@ -1,6 +1,6 @@
 package com.wechat.detal.dao;
 
-import com.wechat.detal.entity.ConfigChatting;
+import com.wechat.detal.entity.conofig.ConfigChatting;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
