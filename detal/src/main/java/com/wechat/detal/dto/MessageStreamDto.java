@@ -1,5 +1,7 @@
 package com.wechat.detal.dto;
 
+import com.alibaba.fastjson.JSONObject;
+import com.wechat.detal.common.util.JdkDesUtil;
 import com.wechat.detal.inter.Invoke;
 
 /**
@@ -24,6 +26,25 @@ public class MessageStreamDto implements Invoke {
     private String expand5;
 
     private String expand6;
+
+    private String text;
+
+    /**
+     * 解密
+     * @return
+     */
+    public MessageStreamDto des() {
+        MessageStreamDto parse = JSONObject.parseObject(JdkDesUtil.jdkDESRe(this.text), this.getClass());
+        return null;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 
     public String getMessageType() {
         return messageType;

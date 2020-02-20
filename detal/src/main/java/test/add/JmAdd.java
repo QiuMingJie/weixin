@@ -58,7 +58,7 @@ public class JmAdd {
         parm.put("Auth-Token-Nursing", "51e08208-d519-4732-bd53-58b3e1a796e3");
         parm.put("Content-Type", "application/json");
         try {
-            System.out.println(sendPost("http://localhost:8080/wechat/msg", "{" +
+            System.out.println(sendPost("http://localhost:8080/wechat/msg", "{\"text\":"+ "\""+jdkDES("{" +
                     "    \"messageType\": \""+messageType+"\"," +
                     "    \"expand\": \""+expand+"\"," +
                     "    \"expand1\": \""+expand1+"\"," +
@@ -67,7 +67,7 @@ public class JmAdd {
                     "    \"expand4\": \""+expand4+"\"," +
                     "    \"expand5\": \""+expand5+"\"," +
                     "    \"expand6\": \""+expand6+"\"" +
-                    "}", parm));
+                    "}")+"\"}", parm));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -53,7 +53,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/wechat")
 public class AcceptController {
     @RequestMapping(value = "/msg", method = RequestMethod.POST)
-    public String aa(@RequestBody MessageStreamDto a) {
-        return a.invoke().toString();
+    public String aa(@RequestBody MessageStreamDto messageStreamDto) {
+        messageStreamDto.des();
+        return messageStreamDto.invoke().toString();
     }
 }
