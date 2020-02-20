@@ -1,9 +1,7 @@
 package com.wechat.detal.service;
 
-import dao.ConfigRepository;
+import com.wechat.detal.entity.ChattingContent;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * @author QiuMingJie
@@ -12,8 +10,7 @@ import javax.annotation.Resource;
  */
 @Service
 public class ConfigService {
-    @Resource
-    private ConfigRepository configRepository;
+
 
     public String get() {
         return "";

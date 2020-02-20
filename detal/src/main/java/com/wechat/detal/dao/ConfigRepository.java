@@ -1,6 +1,6 @@
-package dao;
+package com.wechat.detal.dao;
 
-import com.wechat.detal.entity.Config;
+import com.wechat.detal.entity.ConfigChatting;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
  * @description
  */
 @Repository
-public interface ConfigRepository  extends JpaRepository<Config,String > {
+public interface ConfigRepository  extends JpaRepository<ConfigChatting,String > {
 
 }

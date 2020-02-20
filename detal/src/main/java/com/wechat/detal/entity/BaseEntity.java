@@ -74,4 +74,9 @@ public class BaseEntity implements Serializable {
     public void setDeleteFlag(Boolean deleteFlag) {
         this.deleteFlag = deleteFlag;
     }
+
+    public void delete() {
+        this.deleteFlag = true;
+    }
+
 }
