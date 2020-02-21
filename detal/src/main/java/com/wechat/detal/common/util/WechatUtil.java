@@ -1,6 +1,7 @@
 package com.wechat.detal.common.util;
 
 import com.wechat.detal.config.Config;
+import com.wechat.detal.config.Dict;
 import com.wechat.detal.dto.MessageStreamDto;
 import com.wechat.detal.service.ChattingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,27 +48,36 @@ public class WechatUtil {
      *
      * @param id
      * @param msg
+     * @param photoDesHtml  图片，描述和网址
      * @return
      */
-    public static void sendMsg(String id, String msg, String... type) {
+    public static void sendContent(String id, String msg, String type,String... photoDesHtml) {
         if (CommonUtils.notEmpty(id) && CommonUtils.notEmpty(msg)) {
             if (CommonUtils.empty(type)) {
-                MessageStreamDto.resultMessageSreamDto.add(new MessageStreamDto("10100", id, msg));
-            } else {
-                MessageStreamDto.resultMessageSreamDto.add(new MessageStreamDto(type[0], id, msg));
+                MessageStreamDto.resultMessageSreamDto.add(new MessageStreamDto(Dict.sendMsg, id, msg));
+            } else if (Dict.sendXml.equals(type)) {
+                if (CommonUtils.notEmpty(photoDesHtml) && photoDesHtml.length == 3) {
+                    MessageStreamDto.resultMessageSreamDto.add(new MessageStreamDto(type, id, msg,photoDesHtml[0],photoDesHtml[1],photoDesHtml[2]));
+                }
+            }else {
+                MessageStreamDto.resultMessageSreamDto.add(new MessageStreamDto(type, id, msg));
             }
         }
     }
 
-    private static MessageStreamDto createMsg(String id, String msg, String... type) {
+    private static MessageStreamDto createMsg(String id, String msg, String type) {
         if (CommonUtils.notEmpty(id) && CommonUtils.notEmpty(msg)) {
             if (CommonUtils.empty(type)) {
-                return new MessageStreamDto("10100", id, msg);
+                return new MessageStreamDto(Dict.sendMsg, id, msg);
             } else {
-                return new MessageStreamDto(type[0], id, msg);
+                return new MessageStreamDto(type, id, msg);
             }
         }
         return null;
+    }
+
+    private static MessageStreamDto createMsg(String id, String msg) {
+        return createMsg(id, msg, "");
     }
 
 
