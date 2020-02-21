@@ -4,12 +4,17 @@ import com.alibaba.fastjson.JSONObject;
 import com.wechat.detal.common.util.JdkDesUtil;
 import com.wechat.detal.inter.Invoke;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author QiuMingJie
  * @date 2020-02-20 17:58
  * @description 接收和传入的dto, 总父类
  */
 public class MessageStreamDto implements Invoke {
+
+    public static List<MessageStreamDto> resultMessageSreamDto = new ArrayList<>();
 
     private String messageType;
 
@@ -28,6 +33,24 @@ public class MessageStreamDto implements Invoke {
     private String expand6;
 
     private String text;
+
+    public MessageStreamDto(String messageType, String expand, String expand1) {
+        this.messageType = messageType;
+        this.expand = expand;
+        this.expand1 = expand1;
+    }
+
+    public MessageStreamDto(String messageType, String expand, String expand1, String expand2, String expand3, String expand4) {
+        this.messageType = messageType;
+        this.expand = expand;
+        this.expand1 = expand1;
+        this.expand2 = expand2;
+        this.expand3 = expand3;
+        this.expand4 = expand4;
+    }
+
+    public MessageStreamDto() {
+    }
 
     /**
      * 解密

@@ -1,4 +1,4 @@
-package com.wechat.detal.controller.accept;
+package com.wechat.detal.controller;
 
 import com.wechat.detal.dto.MessageStreamDto;
 import org.springframework.web.bind.annotation.RequestBody;
