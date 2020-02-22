@@ -10,9 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class Dispatcher {
 
-    @Autowired
-    ChattingService chattingService;
-
     public  Object dispatcher() {
         return null;
     }

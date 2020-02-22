@@ -1,20 +1,22 @@
 package com.wechat.detal.dto;
 
 import com.alibaba.fastjson.JSONObject;
+import com.wechat.detal.common.util.CommonUtils;
 import com.wechat.detal.common.util.JdkDesUtil;
-import com.wechat.detal.inter.Invoke;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.wechat.detal.config.ReturnDict;
+import com.wechat.detal.config.ReceiveDict;
+import com.wechat.detal.handler.SystemContentHandler;
+import com.wechat.detal.handler.WechatContentHandler;
+import com.wechat.detal.list.ResultStream;
 
 /**
  * @author QiuMingJie
  * @date 2020-02-20 17:58
  * @description 接收和传入的dto, 总父类
  */
-public class MessageStreamDto implements Invoke {
+public class MessageStreamDto {
 
-    public static List<MessageStreamDto> resultMessageSreamDto = new ArrayList<>();
+    public static ResultStream<MessageStreamDto> resultMessageStreamDto = new ResultStream<>();
 
     private String messageType;
 
@@ -49,16 +51,52 @@ public class MessageStreamDto implements Invoke {
         this.expand4 = expand4;
     }
 
+    @Override
+    public String toString() {
+        return messageType + ReturnDict.IN_ORDER +
+                expand + ReturnDict.IN_ORDER +
+                expand1 + ReturnDict.IN_ORDER +
+                expand2 + ReturnDict.IN_ORDER +
+                expand3 + ReturnDict.IN_ORDER +
+                expand4 + ReturnDict.IN_ORDER +
+                expand5 + ReturnDict.IN_ORDER +
+                expand6;
+    }
+
     public MessageStreamDto() {
     }
 
+    public String print() {
+        return "MessageStreamDto{" +
+                "messageType='" + messageType + '\'' +
+                ", expand='" + expand + '\'' +
+                ", expand1='" + expand1 + '\'' +
+                ", expand2='" + expand2 + '\'' +
+                ", expand3='" + expand3 + '\'' +
+                ", expand4='" + expand4 + '\'' +
+                ", expand5='" + expand5 + '\'' +
+                ", expand6='" + expand6 + '\'' +
+                ", text='" + text + '\'' +
+                '}';
+    }
+
     /**
-     * 解密
+     * 解密 调用，回参
+     *
      * @return
      */
-    public MessageStreamDto des() {
+    public ResultStream<MessageStreamDto> des() {
         MessageStreamDto parse = JSONObject.parseObject(JdkDesUtil.jdkDESRe(this.text), this.getClass());
-        return null;
+        if (CommonUtils.notEmpty(parse)) {
+            if (parse.getMessageType().startsWith(ReceiveDict.WECHAT_HEAD)) {
+                new WechatContentHandler().dispatcher(parse);
+            }
+            if (parse.getMessageType().startsWith(ReceiveDict.SYS_HEAD)) {
+                new SystemContentHandler().dispatcher(parse);
+            }
+            System.out.println("收到   "+parse.print());
+        }
+        return resultMessageStreamDto;
     }
 
     public String getText() {
@@ -133,8 +171,4 @@ public class MessageStreamDto implements Invoke {
         this.expand6 = expand6;
     }
 
-    @Override
-    public Object invoke() {
-        return null;
-    }
 }

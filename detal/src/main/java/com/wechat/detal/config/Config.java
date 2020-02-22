@@ -7,7 +7,7 @@ package com.wechat.detal.config;
  */
 public class Config {
 
-    public static String adminWechatId1;
+    public static String adminWechatId1="wxid_b8lq4voq6wvp22";
 
     public static String adminWechatId2;
 }

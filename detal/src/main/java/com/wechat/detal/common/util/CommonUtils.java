@@ -4,6 +4,7 @@ package com.wechat.detal.common.util;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.wechat.detal.dto.MessageStreamDto;
 import com.wechat.detal.inter.GetId;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -104,6 +105,10 @@ public class CommonUtils {
         return 0 == var;
     }
 
+    public static boolean empty(MessageStreamDto var) {
+        return  null == var||isBlank(var.getMessageType());
+    }
+
     /**
      * 非空
      * @param var
@@ -129,6 +134,16 @@ public class CommonUtils {
      */
     public static boolean notEmpty(Object var) {
         return null != var;
+    }
+
+    /**
+     * 重写信息类的空判断方法
+     * 根据code判断，假如code为空则认为是空的
+     * @param var
+     * @return
+     */
+    public static boolean notEmpty(MessageStreamDto var) {
+        return  !(null == var||isBlank(var.getMessageType()));
     }
     
     /**

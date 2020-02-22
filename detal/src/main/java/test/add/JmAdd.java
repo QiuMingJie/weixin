@@ -2,10 +2,7 @@ package test.add;
 
 import javax.crypto.*;
 import javax.crypto.spec.DESKeySpec;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.security.Key;
@@ -36,29 +33,36 @@ public class JmAdd {
 //            e.printStackTrace();
 //        }
 //
+//        try {
+//            System.out.println(add("1", "aa我a", "aaa", "aaa", "aaa", "aaa", "aaa", "aaa"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        System.out.println(jdkDES("系统通知-连接服务器"));
+        System.out.println(jdkDESRe("beb9eef59fbe34a6fb6bfb613778ad90ca2b03980f7600a7cc55466e79edf859"));
         try {
-            add("aaa", "aaa", "aaa", "aaa", "aaa", "aaa", "aaa", "aaa");
+            System.out.println(add("1", "aa我a", "你喝点水", "aaa", "aaa", "aaa", "aaa", "aaa"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(jdkDES("a"));
-        System.out.println(jdkDESRe(jdkDES("aaa")));
-
 
     }
-
+    public static String add1(String messageType, String expand, String expand1, String expand2, String expand3, String expand4, String expand5, String expand6) throws IOException {
+        sendPost("http://localhost:8080/wechat/msg", "{\"text\":" + "\"" + expand + "\"}", new ConcurrentHashMap<>());
+        return "范德萨";
+    }
     /**
      *
      * 这个是调用类，调用远程的java
      */
     public static String add(String messageType, String expand, String expand1, String expand2, String expand3, String expand4, String expand5, String expand6) throws IOException {
-
         Map<String, String> parm = new ConcurrentHashMap<>();
         parm.put("App-Token-Nursing", "51e827c9-d80e-40a1-a95a-1edc257596e7");
         parm.put("Auth-Token-Nursing", "51e08208-d519-4732-bd53-58b3e1a796e3");
         parm.put("Content-Type", "application/json");
         try {
-            System.out.println(sendPost("http://localhost:8080/wechat/msg", "{\"text\":"+ "\""+jdkDES("{" +
+           return sendPost("http://localhost:8080/wechat/msg", "{\"text\":"+ "\""+jdkDES("{" +
                     "    \"messageType\": \""+messageType+"\"," +
                     "    \"expand\": \""+expand+"\"," +
                     "    \"expand1\": \""+expand1+"\"," +
@@ -67,19 +71,11 @@ public class JmAdd {
                     "    \"expand4\": \""+expand4+"\"," +
                     "    \"expand5\": \""+expand5+"\"," +
                     "    \"expand6\": \""+expand6+"\"" +
-                    "}")+"\"}", parm));
+                    "}")+"\"}", parm);
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        return messageType + expand + expand1 + expand2 + expand3 + expand4 + expand5 + expand6;
-        return sendPost("http://localhost:8080/wechat/msg", "{\n" +
-                "    \"startDate\": \"2019-10-21\",\n" +
-                "    \"endDate\": \"2019-11-27\",\n" +
-                "    \"executeType\": \"\",\n" +
-                "    \"patientId\": \"10675194\",\n" +
-                "    \"visitId\": \"1\"\n" +
-                "}", parm);
-
+        return null;
     }
 
 
@@ -108,7 +104,7 @@ public class JmAdd {
         conn.setDoOutput(true);
         conn.setDoInput(true);
         // 获取URLConnection对象对应的输出流
-        out = new PrintWriter(conn.getOutputStream());
+        out = new PrintWriter(new OutputStreamWriter(conn.getOutputStream(),"utf-8"));
         // 发送请求参数
         out.print(param);
         // flush输出流的缓冲
@@ -158,7 +154,7 @@ public class JmAdd {
             //3.加密    DES/ECB/PKCS5Padding--->算法/工作方式/填充方式
             Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5Padding");//通过Cipher这个类进行加解密相关操作
             cipher.init(Cipher.ENCRYPT_MODE, convertSecretKey);
-            byte[] result = cipher.doFinal(content.getBytes());//输入要加密的内容
+            byte[] result = cipher.doFinal(content.getBytes("utf-8"));//输入要加密的内容
             // System.out.println("加密的结果：" + printHexString(result));
             // jdkDESRe(printHexString(result));
 

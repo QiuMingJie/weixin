@@ -1,6 +1,7 @@
 package com.wechat.detal.controller;
 
 import com.wechat.detal.dto.MessageStreamDto;
+import com.wechat.detal.list.ResultStream;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 00003	系统通知-退出成功	id	昵称
  * 00004	系统通知-发送二维码
  * 00005	系统通知-断开服务器
- *
+ * <p>
  * 10000	微信通知-登录成功	id	昵称
  * 10001	微信通知-退出成功	id	昵称
  * 10003	微信通知-未知消息
@@ -35,8 +36,8 @@ import org.springframework.web.bind.annotation.RestController;
  * 10300	微信公众号-初始化	索引	id	昵称
  * 10301	微信公众号-收到信息
  * 19900	微信信息-发出信息	索引写死为-1	时间	内容	发送到达id	消息接受者昵称
- *
- *
+ * <p>
+ * <p>
  * 发送码	传参					意思
  * 00000						发送
  * 10100	id	信息				微信发送信息
@@ -54,7 +55,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class AcceptController {
     @RequestMapping(value = "/msg", method = RequestMethod.POST)
     public String aa(@RequestBody MessageStreamDto messageStreamDto) {
-        messageStreamDto.des();
-        return messageStreamDto.invoke().toString();
+        System.out.println(messageStreamDto.getText());
+        String result = messageStreamDto.des().toString();
+        System.out.println("回参   "+MessageStreamDto.resultMessageStreamDto.print());
+        MessageStreamDto.resultMessageStreamDto=new ResultStream<>();
+        return result;
     }
 }
