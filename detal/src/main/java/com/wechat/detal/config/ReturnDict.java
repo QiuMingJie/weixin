@@ -36,6 +36,10 @@ public class ReturnDict {
 
     public static final String ACCEPT_FRIEND = "10300";
 
+    public static final String SYS_DO_NOTHING = "00000";
+
+    public static final String SYS_ERROR = "00001";
+
     /**
      * 命令内的分隔
      */

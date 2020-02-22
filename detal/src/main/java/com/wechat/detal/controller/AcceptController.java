@@ -1,5 +1,6 @@
 package com.wechat.detal.controller;
 
+import com.wechat.detal.common.util.JdkDesUtil;
 import com.wechat.detal.dto.MessageStreamDto;
 import com.wechat.detal.list.ResultStream;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -55,10 +56,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class AcceptController {
     @RequestMapping(value = "/msg", method = RequestMethod.POST)
     public String aa(@RequestBody MessageStreamDto messageStreamDto) {
-        System.out.println(messageStreamDto.getText());
-        String result = messageStreamDto.des().toString();
-        System.out.println("回参   "+MessageStreamDto.resultMessageStreamDto.print());
-        MessageStreamDto.resultMessageStreamDto=new ResultStream<>();
-        return result;
+        try {
+            JdkDesUtil.jdkDESRe(messageStreamDto.getText());
+            String result = messageStreamDto.des().toString();
+            System.out.println("回参   " + MessageStreamDto.resultMessageStreamDto.print());
+            MessageStreamDto.resultMessageStreamDto = new ResultStream();
+            return result;
+        } catch (Exception e) {
+            return new MessageStreamDto("0001").toString();
+        }
     }
 }

@@ -1,11 +1,6 @@
 package com.wechat.detal.handler;
 
-import com.wechat.detal.common.util.WechatUtil;
-import com.wechat.detal.config.Config;
 import com.wechat.detal.dto.MessageStreamDto;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author QiuMingJie
@@ -31,12 +26,13 @@ import java.util.List;
 public class WechatContentHandler {
 
     public void dispatcher(MessageStreamDto messageStreamDto) {
-        WechatUtil.sendAdminMsg("你<br>好");
-        List<String> a=new ArrayList<>();
-        a.add("filehelper");
-        a.add(Config.adminWechatId1);
-        WechatUtil.sendMsg(a,"接口" );
-        WechatUtil.sendContent("","22677170063@chatroom", "11");
+//        WechatUtil.sendMsg(messageStreamDto.getExpand4(),"直接返回值<br>"+messageStreamDto.getExpand3());
+//        WechatUtil.sendAdminMsg("你<br>好");
+//        List<String> a=new ArrayList<>();
+//        a.add("filehelper");
+//        a.add(Config.adminWechatId1);
+//        WechatUtil.sendMsg(a,"接口" );
+//        WechatUtil.sendContent(00000"","22677170063@chatroom", "11");
 //        WechatUtil.sendContent(Config.adminWechatId1,"吃惊",ReturnDict.SEND_XML,new String []{"file:///C:/Users/Qiu/Desktop/12.jpg","描述","https://jingyan.baidu.com/article/295430f12e7fe80c7e0050d0.html"});
     }
 }

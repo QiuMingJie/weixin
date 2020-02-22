@@ -16,7 +16,7 @@ import com.wechat.detal.list.ResultStream;
  */
 public class MessageStreamDto {
 
-    public static ResultStream<MessageStreamDto> resultMessageStreamDto = new ResultStream<>();
+    public static ResultStream resultMessageStreamDto = new ResultStream();
 
     private String messageType;
 
@@ -66,6 +66,10 @@ public class MessageStreamDto {
     public MessageStreamDto() {
     }
 
+    public MessageStreamDto(String messageType) {
+        this.messageType = messageType;
+    }
+
     public String print() {
         return "MessageStreamDto{" +
                 "messageType='" + messageType + '\'' +
@@ -85,7 +89,7 @@ public class MessageStreamDto {
      *
      * @return
      */
-    public ResultStream<MessageStreamDto> des() {
+    public ResultStream des() {
         MessageStreamDto parse = JSONObject.parseObject(JdkDesUtil.jdkDESRe(this.text), this.getClass());
         if (CommonUtils.notEmpty(parse)) {
             if (parse.getMessageType().startsWith(ReceiveDict.WECHAT_HEAD)) {
