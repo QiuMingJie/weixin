@@ -19,7 +19,7 @@ public class BaseEntity implements Serializable {
 
     @CreationTimestamp
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @Column(updatable=false)
+    @Column(updatable = false)
     private Date createDateTime;
 
     @UpdateTimestamp
@@ -32,7 +32,7 @@ public class BaseEntity implements Serializable {
     @Column(name = "DELETE_FLAG")
     private Boolean deleteFlag;
 
-    @Column(name="REMARK")
+    @Column(name = "REMARK")
     private String remark;
 
     public Date getCreateDateTime() {

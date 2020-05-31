@@ -22,10 +22,10 @@
 
 
         <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-        <!-- 不需要version 会根据parent版本进行添加上 -->
-    </dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!-- 不需要version 会根据parent版本进行添加上 -->
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,7 +62,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 
 
     <build>

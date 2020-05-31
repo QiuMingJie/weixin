@@ -1,12 +1,12 @@
 package com.wechat.detal.handler;
 
+import com.wechat.detal.common.util.WechatUtil;
 import com.wechat.detal.dto.MessageStreamDto;
 
 /**
  * @author QiuMingJie
  * @date 2020-02-21 14:32
- * @description
- * 10000    微信通知-登录成功	id	昵称
+ * @description 10000    微信通知-登录成功	id	昵称
  * 10001	微信通知-退出成功	id	昵称
  * 10003	微信通知-未知消息
  * 10100	微信好友-初始化	索引	id	昵称	备注
@@ -26,8 +26,9 @@ import com.wechat.detal.dto.MessageStreamDto;
 public class WechatContentHandler {
 
     public void dispatcher(MessageStreamDto messageStreamDto) {
+
 //        WechatUtil.sendMsg(messageStreamDto.getExpand4(),"直接返回值<br>"+messageStreamDto.getExpand3());
-//        WechatUtil.sendAdminMsg("你<br>好");
+        WechatUtil.sendAdminMsg("你<br>好");
 //        List<String> a=new ArrayList<>();
 //        a.add("filehelper");
 //        a.add(Config.adminWechatId1);

@@ -3,8 +3,8 @@ package com.wechat.detal.dto;
 import com.alibaba.fastjson.JSONObject;
 import com.wechat.detal.common.util.CommonUtils;
 import com.wechat.detal.common.util.JdkDesUtil;
-import com.wechat.detal.config.ReturnDict;
 import com.wechat.detal.config.ReceiveDict;
+import com.wechat.detal.config.ReturnDict;
 import com.wechat.detal.handler.SystemContentHandler;
 import com.wechat.detal.handler.WechatContentHandler;
 import com.wechat.detal.list.ResultStream;
@@ -98,7 +98,7 @@ public class MessageStreamDto {
             if (parse.getMessageType().startsWith(ReceiveDict.SYS_HEAD)) {
                 new SystemContentHandler().dispatcher(parse);
             }
-            System.out.println("收到   "+parse.print());
+            System.out.println("收到   " + parse.print());
         }
         return resultMessageStreamDto;
     }

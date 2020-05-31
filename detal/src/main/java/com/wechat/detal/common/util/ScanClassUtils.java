@@ -17,12 +17,11 @@ import static org.springframework.util.ClassUtils.convertClassNameToResourcePath
 
 /**
  * 类扫描工具类
- * 
+ * <p>
  * ScanClassUtils
- *
  */
 public class ScanClassUtils {
-    
+
     private static final String RESOURCE_PATTERN = "/**/*.class";
     private static final ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
 

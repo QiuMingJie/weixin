@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class Dispatcher {
 
-    public  Object dispatcher() {
+    public Object dispatcher() {
         return null;
     }
 }

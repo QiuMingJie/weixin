@@ -17,23 +17,24 @@ public interface ChattingContentRepository extends JpaRepository<ChattingContent
 
     /**
      * 查询私聊的对话内容
-     * @param senderId 发送者
+     *
+     * @param senderId  发送者
      * @param receiveId 收到者
-     * @param page 翻页
+     * @param page      翻页
      * @return
      */
-    public List<ChattingContent> findChattingContentsBySenderWechatIdOrReceiverId(String senderId, String receiveId,Pageable page);
+    public List<ChattingContent> findChattingContentsBySenderWechatIdOrReceiverId(String senderId, String receiveId, Pageable page);
 
 
     /**
      * 查询群聊信息
+     *
      * @param senderId
      * @param receiveId
      * @param page
      * @return
      */
-    public List<ChattingContent> findChattingContentsBySenderChattingIdOrReceiverId(String senderId, String receiveId,Pageable page);
-
+    public List<ChattingContent> findChattingContentsBySenderChattingIdOrReceiverId(String senderId, String receiveId, Pageable page);
 
 
 }

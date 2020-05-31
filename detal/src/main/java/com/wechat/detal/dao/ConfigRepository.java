@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
  * @description
  */
 @Repository
-public interface ConfigRepository  extends JpaRepository<ConfigChatting,String > {
+public interface ConfigRepository extends JpaRepository<ConfigChatting, String> {
 
 }

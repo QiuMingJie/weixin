@@ -34,7 +34,7 @@ public class ResultStream extends ArrayList<MessageStreamDto> {
 
     public String print() {
         if (CommonUtils.empty(this)) {
-            return new MessageStreamDto("0000","不做任何处理","").print();
+            return new MessageStreamDto("0000", "不做任何处理", "").print();
         }
         StringBuilder result = new StringBuilder();
         result.append(this.size());

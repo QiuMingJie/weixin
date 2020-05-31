@@ -173,9 +173,7 @@ public class AESEncryptUtils {
      * @param content
      * @param key
      * @return
-     * @throws Exception
-     *
-     * 加密
+     * @throws Exception 加密
      */
     public static String encryptAES(String content, String key)
             throws Exception {
@@ -198,9 +196,7 @@ public class AESEncryptUtils {
      * @param content
      * @param key
      * @return
-     * @throws Exception
-     *
-     * 解密
+     * @throws Exception 解密
      */
     public static String decryptAES(String content, String key)
             throws Exception {

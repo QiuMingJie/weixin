@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * @author QiuMingJie
  * @date 2020-02-16 14:56
- * @description 认证表,用来存储认证码的基本信息
+ * @description 认证表, 用来存储认证码的基本信息
  */
 @Table(name = "KEY")
 public class Key extends BaseEntity {
@@ -27,7 +27,7 @@ public class Key extends BaseEntity {
      * 0是默认类型
      * 1
      */
-    @Column(name ="KEY_TYPE", columnDefinition="varchar(255) default '0'")
+    @Column(name = "KEY_TYPE", columnDefinition = "varchar(255) default '0'")
     private String keyType;
 
     /**

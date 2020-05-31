@@ -1,7 +1,6 @@
 package com.wechat.detal.common.util;
 
 
-
 public class Defendor {
     public Defendor() {
     }

@@ -7,6 +7,7 @@ import java.util.Properties;
 /**
  * ReadFtpProperties
  * 读取属性文件
+ *
  * @author yanghua
  * @date 2019/9/2
  */

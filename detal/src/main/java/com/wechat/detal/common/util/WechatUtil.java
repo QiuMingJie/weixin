@@ -45,13 +45,13 @@ public class WechatUtil {
      */
     public static void sendMsg(List<String> ids, String msg) {
         if (CommonUtils.notEmpty(ids) && CommonUtils.notEmpty(msg)) {
-            ids.forEach(x->MessageStreamDto.resultMessageStreamDto.add(createMsg(x,msg)));
+            ids.forEach(x -> MessageStreamDto.resultMessageStreamDto.add(createMsg(x, msg)));
         }
     }
 
     public static void sendMsg(String id, String msg) {
         if (CommonUtils.notEmpty(id) && CommonUtils.notEmpty(msg)) {
-            MessageStreamDto.resultMessageStreamDto.add(createMsg(id,msg));
+            MessageStreamDto.resultMessageStreamDto.add(createMsg(id, msg));
         }
     }
 
@@ -60,19 +60,18 @@ public class WechatUtil {
      *
      * @param sendToId
      * @param msg
-     * @param photoDesHtml  图片，描述和网址，其中图片假如是网址可以直接，假如是文件file:///C:/Users/Qiu/Desktop/12.jpg
-     *
+     * @param photoDesHtml 图片，描述和网址，其中图片假如是网址可以直接，假如是文件file:///C:/Users/Qiu/Desktop/12.jpg
      * @return
      */
-    public static void sendContent(String returnType,String sendToId, String msg,String... photoDesHtml) {
+    public static void sendContent(String returnType, String sendToId, String msg, String... photoDesHtml) {
         if (CommonUtils.notEmpty(sendToId) && CommonUtils.notEmpty(msg)) {
             if (CommonUtils.empty(returnType)) {
                 MessageStreamDto.resultMessageStreamDto.add(new MessageStreamDto(ReturnDict.SEND_MSG, sendToId, msg));
             } else if (ReturnDict.SEND_XML.equals(returnType)) {
                 if (CommonUtils.notEmpty(photoDesHtml) && photoDesHtml.length == 3) {
-                    MessageStreamDto.resultMessageStreamDto.add(new MessageStreamDto(returnType, sendToId, msg,photoDesHtml[0],photoDesHtml[1],photoDesHtml[2]));
+                    MessageStreamDto.resultMessageStreamDto.add(new MessageStreamDto(returnType, sendToId, msg, photoDesHtml[0], photoDesHtml[1], photoDesHtml[2]));
                 }
-            }else {
+            } else {
                 MessageStreamDto.resultMessageStreamDto.add(new MessageStreamDto(returnType, sendToId, msg));
             }
         }

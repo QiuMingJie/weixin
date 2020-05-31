@@ -24,12 +24,13 @@ public class FormUtil {
         }
         String templateId = getFormDictId(currentId);
         String index = currentId.substring(11, 15);
-        Integer i =splitZero(index) + 1;
+        Integer i = splitZero(index) + 1;
         return templateId + fillInteger(i);
     }
 
     /**
      * 切前面的0，然后返回一个int
+     *
      * @param str 0001
      * @return 1
      */
@@ -57,7 +58,7 @@ public class FormUtil {
         while (s.length() < 4) {
             s = "0" + s;
         }
-        return "_"+s;
+        return "_" + s;
     }
 
     /**
@@ -96,10 +97,10 @@ public class FormUtil {
      * @return I00010002
      */
     public static String caculItemDictId(String formIdOrFormDictId, String type, Integer nextNum) {
-        return getItemDictHead(formIdOrFormDictId, type)+fillInteger(nextNum);
+        return getItemDictHead(formIdOrFormDictId, type) + fillInteger(nextNum);
     }
 
     public static String caculItemDictId(String itemIdHead, Integer nextNum) {
-        return itemIdHead+fillInteger(nextNum);
+        return itemIdHead + fillInteger(nextNum);
     }
 }

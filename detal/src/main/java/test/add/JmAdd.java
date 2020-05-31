@@ -48,12 +48,13 @@ public class JmAdd {
         }
 
     }
+
     public static String add1(String messageType, String expand, String expand1, String expand2, String expand3, String expand4, String expand5, String expand6) throws IOException {
         sendPost("http://localhost:8080/wechat/msg", "{\"text\":" + "\"" + expand + "\"}", new ConcurrentHashMap<>());
         return "范德萨";
     }
+
     /**
-     *
      * 这个是调用类，调用远程的java
      */
     public static String add(String messageType, String expand, String expand1, String expand2, String expand3, String expand4, String expand5, String expand6) throws IOException {
@@ -62,16 +63,16 @@ public class JmAdd {
         parm.put("Auth-Token-Nursing", "51e08208-d519-4732-bd53-58b3e1a796e3");
         parm.put("Content-Type", "application/json");
         try {
-           return sendPost("http://localhost:8080/wechat/msg", "{\"text\":"+ "\""+jdkDES("{" +
-                    "    \"messageType\": \""+messageType+"\"," +
-                    "    \"expand\": \""+expand+"\"," +
-                    "    \"expand1\": \""+expand1+"\"," +
-                    "    \"expand2\": \""+expand2+"\"," +
-                    "    \"expand3\": \""+expand3+"\"," +
-                    "    \"expand4\": \""+expand4+"\"," +
-                    "    \"expand5\": \""+expand5+"\"," +
-                    "    \"expand6\": \""+expand6+"\"" +
-                    "}")+"\"}", parm);
+            return sendPost("http://localhost:8080/wechat/msg", "{\"text\":" + "\"" + jdkDES("{" +
+                    "    \"messageType\": \"" + messageType + "\"," +
+                    "    \"expand\": \"" + expand + "\"," +
+                    "    \"expand1\": \"" + expand1 + "\"," +
+                    "    \"expand2\": \"" + expand2 + "\"," +
+                    "    \"expand3\": \"" + expand3 + "\"," +
+                    "    \"expand4\": \"" + expand4 + "\"," +
+                    "    \"expand5\": \"" + expand5 + "\"," +
+                    "    \"expand6\": \"" + expand6 + "\"" +
+                    "}") + "\"}", parm);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -104,7 +105,7 @@ public class JmAdd {
         conn.setDoOutput(true);
         conn.setDoInput(true);
         // 获取URLConnection对象对应的输出流
-        out = new PrintWriter(new OutputStreamWriter(conn.getOutputStream(),"utf-8"));
+        out = new PrintWriter(new OutputStreamWriter(conn.getOutputStream(), "utf-8"));
         // 发送请求参数
         out.print(param);
         // flush输出流的缓冲
@@ -124,7 +125,6 @@ public class JmAdd {
         }
         return result;
     }
-
 
 
     /**

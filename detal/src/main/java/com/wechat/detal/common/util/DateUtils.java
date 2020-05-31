@@ -429,7 +429,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     }
 
     public static Date concatDate(String yyyy, String MMdd, String HHmm) {
-        Validate validate =  new Validate();
+        Validate validate = new Validate();
         validate.isNotEmpty(yyyy, "日期年份不能为空");
         validate.isNotEmpty(MMdd, "日期日月不能为空");
         validate.falseThrow(Pattern.matches("\\d{4}", yyyy), "日期年份格式不对");
@@ -451,7 +451,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * date 2018年8月30日
      */
     public static Date guessDateWithMonthDay(Date minDate, Date maxDate, String MMdd, String HHmm) {
-        Validate validate =  new Validate();
+        Validate validate = new Validate();
         validate.isNotEmpty(minDate, "minDate不能为空").isNotEmpty(maxDate, "maxDate不能为空")
                 .isNotEmpty(MMdd, "日期月日不能为空");
         MMdd = formatWithMMdd(MMdd);
@@ -524,7 +524,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      */
     public static Date guessRecordYear(Date minDate, Date maxDate, String MMdd, String HHmm, String prefix) {
         prefix = CommonUtils.nullToEmpty(prefix);
-        Validate validate =  new Validate();
+        Validate validate = new Validate();
         validate.isNotEmpty(minDate, "minDate不能为空").isNotEmpty(maxDate, "maxDate不能为空")
                 .isNotEmpty(MMdd, prefix + "日期不能为空");
         MMdd = formatWithMMdd(MMdd);
@@ -685,7 +685,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @return 相等返回0，大于返回正
      */
     public static int compareDate(String dateStr, String date2Str, String dateFormat, String date2Format) {
-        Validate validate =  new Validate();
+        Validate validate = new Validate();
         if (CommonUtils.empty(dateFormat) && CommonUtils.empty(date2Format)) {
             validate.error("时间格式不能都为空");
         }
@@ -714,24 +714,24 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     public static Pattern HHMM_EXTRACT_PATTERN = Pattern.compile("\\s*([0-9]{1,2})\\s*[：:]+\\s*([0-9]{1,2})\\s*");
 
     /**
-     * @Description:  提取HHmm格式的时间点，方法不报错
+     * @Description: 提取HHmm格式的时间点，方法不报错
      * 9:00-13:00/14:00-17:00  -> [09:00, 13:00, 14:00, 17:00]
      * @Author: lijuntao
      * @Date: 2020/1/9
      */
-    public static List<String> extractHHmm(String str){
+    public static List<String> extractHHmm(String str) {
         List<String> list = Lists.newArrayList();
         Matcher matcher = HHMM_EXTRACT_PATTERN.matcher(str);
         System.out.println(str);
-        while(matcher.find()){
+        while (matcher.find()) {
             String group1 = matcher.group(1);
             Integer integer1 = NumberUtils.parseInteger(group1);
-            if(NumberUtils.primitive(integer1) < 10 ){
+            if (NumberUtils.primitive(integer1) < 10) {
                 group1 = "0" + integer1;
             }
             String group2 = matcher.group(2);
             Integer integer2 = NumberUtils.parseInteger(group2);
-            if(NumberUtils.primitive(integer2) < 10 ){
+            if (NumberUtils.primitive(integer2) < 10) {
                 group2 = "0" + integer2;
             }
             String HHmm = group1 + ":" + group2;
